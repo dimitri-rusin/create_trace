@@ -7,6 +7,7 @@ def info(value):
   # How is the value expressed in the Python language?
   frame = inspect.currentframe()
   expressions = inspect.getframeinfo(frame.f_back).code_context
+  line_number = inspect.getframeinfo(frame.f_back).lineno
   expression = expressions[0]
   left_index = expression.find('(') + 1 # jump over the opening parenthesis
   right_index = -2 # the ')\n' symbols are at the last 2 positions of the string
@@ -15,7 +16,7 @@ def info(value):
   print('---------------------------------------------------------------')
 
   # Show the given expression of the value
-  print(expression)
+  print(f'{expression} at line {line_number}')
 
   # Show the type of the value.
   try: print(f'  type: {type(value)}')
