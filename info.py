@@ -16,7 +16,7 @@ def info(value):
 
   print('---------------------------------------------------------------')
 
-  # Show the given expression of the value
+  # Show the given expression of the value.
   print(f'''{colored.stylize(expression, colored.fg('green_1'))} at line {colored.stylize(f'{line_number}', colored.fg('green_1'))}''')
 
   # Show the type of the value.
@@ -54,6 +54,9 @@ def info(value):
   closing_name = colored.stylize(" :value", colored.bg("dark_cyan"))
   try: print(f'  {opening_name}{value}{closing_name}')
   except: pass
+
+  # Show the given expression of the value.
+  print(f'''{colored.stylize(f'from line {line_number}: {expression}', colored.fg('green_1'))}''')
 
 import pdb
 def breakpoint():
