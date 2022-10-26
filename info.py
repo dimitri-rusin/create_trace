@@ -61,6 +61,16 @@ def info(value):
 import pdb
 def breakpoint():
   pdb.set_trace()
+
+# PYTHON HACK: Convert a dict object into a an object where the dict keys are attributes
+# See: https://stackoverflow.com/questions/59250557/how-to-convert-a-python-dict-to-a-class-object
+# =====================================================================
+class ObjectFromDict:
+  def __init__(self, dictionary):
+    for key, value in dictionary.items():
+      setattr(self, key, value)
+# =====================================================================
+
 import re
 def convert_to_identifier(name):
   with_underscores = re.sub('[^a-zA-Z0-9]', '_', name)
