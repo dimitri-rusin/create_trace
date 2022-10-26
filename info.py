@@ -61,3 +61,9 @@ def info(value):
 import pdb
 def breakpoint():
   pdb.set_trace()
+import re
+def convert_to_identifier(name):
+  with_underscores = re.sub('[^a-zA-Z0-9]', '_', name)
+  with_underscores = re.sub('_+', '_', with_underscores)
+  with_underscores = with_underscores.strip('_')
+  return with_underscores
