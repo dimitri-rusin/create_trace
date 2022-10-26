@@ -20,39 +20,39 @@ def info(value):
   print(f'''{colored.stylize(expression, colored.fg('green_1'))} at line {colored.stylize(f'{line_number}', colored.fg('green_1'))}''')
 
   # Show the type of the value.
-  opening_name = colored.stylize("type: ", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(" :type", colored.bg("dark_cyan"))
-  try: print(f'  {opening_name}{type(value)}{closing_name}')
+  opening_name = colored.stylize("type:", colored.bg("dark_cyan"))
+  closing_name = colored.stylize(":type", colored.bg("dark_cyan"))
+  try: print(f'  {opening_name}\n{type(value)}\n  {closing_name}')
   except: pass
 
   # Show the number of elements of the value, if possible.
-  opening_name = colored.stylize("len: ", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(" :len", colored.bg("dark_cyan"))
-  try: print(f'  {opening_name}{len(value)}{closing_name}')
+  opening_name = colored.stylize("len:", colored.bg("dark_cyan"))
+  closing_name = colored.stylize(":len", colored.bg("dark_cyan"))
+  try: print(f'  {opening_name}\n{len(value)}\n  {closing_name}')
   except: pass
 
   # Show the type of the first element inside of the iterable value, if possible.
-  opening_name = colored.stylize("type[0]: ", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(" :type[0]", colored.bg("dark_cyan"))
-  try: print(f'  {opening_name}{type(value[0])}{closing_name}')
+  opening_name = colored.stylize("type[0]:", colored.bg("dark_cyan"))
+  closing_name = colored.stylize(":type[0]", colored.bg("dark_cyan"))
+  try: print(f'  {opening_name}\n{type(value[0])}\n  {closing_name}')
   except: pass
 
   # Show the class methods of the value.
-  opening_name = colored.stylize("dir: ", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(" :dir", colored.bg("dark_cyan"))
-  try: print(f'  {opening_name}{dir(value)}{closing_name}')
+  opening_name = colored.stylize("dir:", colored.bg("dark_cyan"))
+  closing_name = colored.stylize(":dir", colored.bg("dark_cyan"))
+  try: print(f'  {opening_name}\n{dir(value)}\n  {closing_name}')
   except: pass
 
   # Show the class attributes of the value.
-  opening_name = colored.stylize("dict: ", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(" :dict", colored.bg("dark_cyan"))
-  try: print(f'  {opening_name}{value.__dict__}{closing_name}')
+  opening_name = colored.stylize("dict:", colored.bg("dark_cyan"))
+  closing_name = colored.stylize(":dict", colored.bg("dark_cyan"))
+  try: print(f'  {opening_name}\n{value.__dict__}\n  {closing_name}')
   except: pass
 
   # Show the value itself.
-  opening_name = colored.stylize("value: ", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(" :value", colored.bg("dark_cyan"))
-  try: print(f'  {opening_name}{value}{closing_name}')
+  opening_name = colored.stylize("value:", colored.bg("dark_cyan"))
+  closing_name = colored.stylize(":value", colored.bg("dark_cyan"))
+  try: print(f'  {opening_name}\n{value}\n  {closing_name}')
   except: pass
 
   # Show the given expression of the value.
