@@ -58,9 +58,6 @@ def info(value):
   # Show the given expression of the value.
   print(f'''{colored.stylize(f'from line {line_number}: {expression}', colored.fg('green_1'))}''')
 
-import pdb
-def breakpoint():
-  pdb.set_trace()
 
 # PYTHON HACK: Convert a dict object into a an object where the dict keys are attributes
 # See: https://stackoverflow.com/questions/59250557/how-to-convert-a-python-dict-to-a-class-object
