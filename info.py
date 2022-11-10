@@ -1,7 +1,30 @@
+is_colored_module_imported = True
+try:
+  import colored
+except:
+  is_colored_module_imported = False
+
+def colored_bg(color):
+  if is_colored_module_imported:
+    return colored.bg(color)
+  else:
+    return None
+
+def colored_fg(color):
+  if is_colored_module_imported:
+    return colored.fg(color)
+  else:
+    return None
+
+def colored_stylize(text, color):
+  if is_colored_module_imported:
+    return colored.stylize(text, color)
+  else:
+    return text
+
 # Just a developer tool: to generate a trace of the Python script,
 # that is more detailed than print commands deliver.
 import inspect
-import colored
 def info(value):
 
   # Get the expression, via which 'value' is brought here.
@@ -17,47 +40,46 @@ def info(value):
   print('---------------------------------------------------------------')
 
   # Show the given expression of the value.
-  print(f'''{colored.stylize(expression, colored.fg('green_1'))} at line {colored.stylize(f'{line_number}', colored.fg('green_1'))}''')
+  print(f'''{colored_stylize(expression, colored_fg('green_1'))} at line {colored_stylize(f'{line_number}', colored_fg('green_1'))}''')
 
   # Show the type of the value.
-  opening_name = colored.stylize("type:", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(":type", colored.bg("dark_cyan"))
+  opening_name = colored_stylize("type:", colored_bg("dark_cyan"))
+  closing_name = colored_stylize(":type", colored_bg("dark_cyan"))
   try: print(f'  {opening_name}\n{type(value)}\n  {closing_name}')
   except: pass
 
   # Show the number of elements of the value, if possible.
-  opening_name = colored.stylize("len:", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(":len", colored.bg("dark_cyan"))
+  opening_name = colored_stylize("len:", colored_bg("dark_cyan"))
+  closing_name = colored_stylize(":len", colored_bg("dark_cyan"))
   try: print(f'  {opening_name}\n{len(value)}\n  {closing_name}')
   except: pass
 
   # Show the type of the first element inside of the iterable value, if possible.
-  opening_name = colored.stylize("type[0]:", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(":type[0]", colored.bg("dark_cyan"))
+  opening_name = colored_stylize("type[0]:", colored_bg("dark_cyan"))
+  closing_name = colored_stylize(":type[0]", colored_bg("dark_cyan"))
   try: print(f'  {opening_name}\n{type(value[0])}\n  {closing_name}')
   except: pass
 
   # Show the class methods of the value.
-  opening_name = colored.stylize("dir:", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(":dir", colored.bg("dark_cyan"))
+  opening_name = colored_stylize("dir:", colored_bg("dark_cyan"))
+  closing_name = colored_stylize(":dir", colored_bg("dark_cyan"))
   try: print(f'  {opening_name}\n{dir(value)}\n  {closing_name}')
   except: pass
 
   # Show the class attributes of the value.
-  opening_name = colored.stylize("dict:", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(":dict", colored.bg("dark_cyan"))
+  opening_name = colored_stylize("dict:", colored_bg("dark_cyan"))
+  closing_name = colored_stylize(":dict", colored_bg("dark_cyan"))
   try: print(f'  {opening_name}\n{value.__dict__}\n  {closing_name}')
   except: pass
 
   # Show the value itself.
-  opening_name = colored.stylize("value:", colored.bg("dark_cyan"))
-  closing_name = colored.stylize(":value", colored.bg("dark_cyan"))
+  opening_name = colored_stylize("value:", colored_bg("dark_cyan"))
+  closing_name = colored_stylize(":value", colored_bg("dark_cyan"))
   try: print(f'  {opening_name}\n{value}\n  {closing_name}')
   except: pass
 
   # Show the given expression of the value.
-  print(f'''{colored.stylize(f'from line {line_number}: {expression}', colored.fg('green_1'))}''')
-
+  print(f'''{colored_stylize(f'from line {line_number}: {expression}', colored_fg('green_1'))}''')
 
 # PYTHON HACK: Convert a dict object into a an object where the dict keys are attributes
 # See: https://stackoverflow.com/questions/59250557/how-to-convert-a-python-dict-to-a-class-object
