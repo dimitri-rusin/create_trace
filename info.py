@@ -4,6 +4,8 @@ try:
 except:
   is_colored_module_imported = False
 
+# set --export --universal PYTHONPATH ~/Softwareentwicklung/create_trace
+
 def colored_bg(color):
   if is_colored_module_imported:
     return colored.bg(color)
