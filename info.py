@@ -1,9 +1,12 @@
-is_colored_module_imported = True
-try:
-  import colored
-except:
-  is_colored_module_imported = False
+import inspect
+import os
+import re
 
+is_colored_module_imported = True
+try: import colored
+except: is_colored_module_imported = False
+
+# Make the d() function accessible from any Python script on the local system:
 # set --export --universal PYTHONPATH ~/Softwareentwicklung/create_trace
 
 def colored_bg(color):
@@ -26,8 +29,7 @@ def colored_stylize(text, color):
 
 # Just a developer tool: to generate a trace of the Python script,
 # that is more detailed than print commands deliver.
-import inspect
-def info(value):
+def d(value):
 
   # Get the expression, via which 'value' is brought here.
   # How is the value expressed in the Python language?
@@ -81,7 +83,9 @@ def info(value):
   except: pass
 
   # Show the given expression of the value.
-  print(f'''{colored_stylize(f'from line {line_number}: {expression}', colored_fg('green_1'))}''')
+  filename = frame.f_back.f_globals['__file__']
+  relative_path = os.path.relpath(filename, os.getcwd())
+  print(f'''{colored_stylize(f'from line {relative_path}:{line_number}: {expression}', colored_fg('green_1'))}''')
 
 # PYTHON HACK: Convert a dict object into a an object where the dict keys are attributes
 # See: https://stackoverflow.com/questions/59250557/how-to-convert-a-python-dict-to-a-class-object
@@ -92,7 +96,6 @@ class ObjectFromDict:
       setattr(self, key, value)
 # =====================================================================
 
-import re
 def convert_to_identifier(name):
   with_underscores = re.sub('[^a-zA-Z0-9]', '_', name)
   with_underscores = re.sub('_+', '_', with_underscores)
