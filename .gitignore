@@ -1,1 +1,3 @@
 .conda_environment/
+dist/
+*.egg-info/
