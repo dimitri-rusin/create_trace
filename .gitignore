@@ -1,3 +1,4 @@
-.conda_environment/
-dist/
 *.egg-info/
+.conda_environment/
+build/
+dist/
